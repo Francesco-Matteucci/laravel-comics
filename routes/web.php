@@ -13,6 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// route HOME
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('home');
+})->name('home');
+
+// route POKEDEX
+Route::get('/pokedex', function () {
+    $pokemons = config('pokedex.pokemons');
+
+    return view('pokedex.index', ['pokemons' => $pokemons]);
+})->name('pokedex');
