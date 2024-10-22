@@ -10,8 +10,10 @@
 
     @include('partials.header')
 
-    <main>
+    <main class="d-flex flex-column justify-content-center align-items-center">
+        <div class="main-content">
         @yield('content')
+    </div>
     </main>
 
     @include('partials.footer')
