@@ -24,3 +24,14 @@ Route::get('/pokedex', function () {
 
     return view('pokedex.index', ['pokemons' => $pokemons]);
 })->name('pokedex');
+
+Route::get('/pokemons/{index}', function (string $index) {
+    $pokemons = config("pokedex.pokemons");
+
+    if (isset($pokemons[$index])) {
+        $pokemon = $pokemons[$index];
+        return view('pokemon.show', compact("pokemon"));
+    } else {
+        abort(404);
+    }
+})->name("pokemons.show");

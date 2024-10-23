@@ -4,18 +4,20 @@
 
 @section('content')
     <div class="pokedex-content container">
-        <h1>Pokedex</h1>
-        <div class="row p-4">
-            @foreach($pokemons as $pokemon)
-                <div class="col-md-2 mb-2">
-                    <div class="card h-100 pokemon-card">
-                        <img src="{{ asset('img/' . $pokemon['sprite']) }}" class="card-img-top p-5" alt="{{ $pokemon['name'] }}">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ $pokemon['name'] }}</h5>
-                            <p class="card-text">Tipo: {{ $pokemon['type'] }}</p>
-                            <p class="card-text">HP: {{ $pokemon['hp'] }}</p>
-                        </div>
-                    </div>
+        <h1 class="text-center">Pokedex</h1>
+        <div class="row justify-content-around">
+            @foreach ($pokemons as $index => $pokemon)
+                <div class="col-2 card m-2 p-3 ">
+                    <ul class="list-group">
+                        <li class="list-group-item list-group-item-action">
+                            <a href="{{ route('pokemons.show', $index) }}">
+                                Nome: {{ $pokemon['name'] }}
+                            </a>
+                        </li>
+                        <li class="list-group-item list-group-item-action">Tipo: {{ $pokemon['type'] }}</li>
+                        <li class="list-group-item list-group-item-action">HP: {{ $pokemon['hp'] }}</li>
+                        <li class="list-group-item list-group-item-action"><img src="{{ asset('img/' . $pokemon['sprite']) }}" alt="{{ $pokemon['name'] }}"></li>
+                    </ul>
                 </div>
             @endforeach
         </div>
